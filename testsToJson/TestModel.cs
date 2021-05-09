@@ -19,13 +19,25 @@ namespace testsToJson
         public string FunctionSig {get; set; }
         public Difficulty Diff { get; set; }
 
-        TestModel(Guid id, string title, string question, string examples, Difficulty diff)
+        public TestModel(){}
+
+        public TestModel(Guid id, string title, string question, string examples, Difficulty diff)
         {
             ID = id;
             Title = title;
             Question = question;
             Examples = examples;
             Diff = diff;
+        }
+
+        public void Clear()
+        {
+            ID = Guid.Empty;
+            Title = "";
+            Question = "";
+            Examples = "";
+            FunctionSig = "";
+            Diff = default;
         }        
 
     }
