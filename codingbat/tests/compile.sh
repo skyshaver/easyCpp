@@ -1,0 +1,1 @@
+gpp -std=c++17 -Wall -Wpedantic test_main.cpp tests.cpp -o tests
