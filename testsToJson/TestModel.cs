@@ -16,6 +16,7 @@ namespace testsToJson
         public string Title { get; set; }
         public string Question { get; set; }
         public string Examples { get; set; }
+        public string FunctionSig {get; set; }
         public Difficulty Diff { get; set; }
 
         TestModel(Guid id, string title, string question, string examples, Difficulty diff)
