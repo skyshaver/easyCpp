@@ -8,13 +8,10 @@ namespace testsToJson
 {
     class Program
     {
-        public static int FindFirstLetter(string str)
+        public static int IdxOfFirstLetter(string str)
         {
-            for(int i = 0; i < str.Length; i++)
-            {
-                if(char.IsLetter(str[i])) return i;
-            }
-            return -1;
+            var alphabet = "abcdefghijklmnopqrstuvwxyz".ToCharArray();
+            return str.IndexOfAny(alphabet);
         }
         static void Main(string[] args)
         {
@@ -37,8 +34,8 @@ namespace testsToJson
                     {                        
                         if(firstLine)
                         {
-                            System.Console.WriteLine($"Title: {line.Substring(FindFirstLetter(line))}");                            
-                            title = line.Substring(FindFirstLetter(line));
+                            System.Console.WriteLine($"Title: {line.Substring(IdxOfFirstLetter(line))}");                            
+                            title = line.Substring(IdxOfFirstLetter(line));
                             firstLine = false;
                         }
                         else if(line =="// ** Examples **")
@@ -47,21 +44,21 @@ namespace testsToJson
                         }
                         else if(isExample)
                         {                            
-                            System.Console.WriteLine($"Example: {line.Substring(FindFirstLetter(line))}");
-                            examples += line.Substring(FindFirstLetter(line));
+                            System.Console.WriteLine($"Example: {line.Substring(IdxOfFirstLetter(line))}");
+                            examples += line.Substring(IdxOfFirstLetter(line));
                         }
                         else
                         {
-                            System.Console.WriteLine($"Question: {line.Substring(FindFirstLetter(line))}");
-                            question += line.Substring(FindFirstLetter(line));
+                            System.Console.WriteLine($"Question: {line.Substring(IdxOfFirstLetter(line))}");
+                            question += line.Substring(IdxOfFirstLetter(line));
                         }
                     }
                     if(line.Last() == ')')
                     {
-                        System.Console.WriteLine($"Function Sig: {line.Substring(FindFirstLetter(line))}");
+                        System.Console.WriteLine($"Function Sig: {line.Substring(IdxOfFirstLetter(line))}");
                         testModels.Add(new TestModel(
                             Guid.NewGuid(), title, question, examples, 
-                            line.Substring(FindFirstLetter(line)), "Easy")
+                            line.Substring(IdxOfFirstLetter(line)), "Easy")
                             );
                         title = ""; question = ""; examples = "";
                     }

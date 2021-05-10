@@ -5,6 +5,13 @@ namespace testsToJson
 {
     class TestModel
     {        
+        public enum DifficultyLevel
+        {
+            Easy,
+            Medium,
+            Hard, 
+            Legendary
+        }
         public Guid ID { get; set; }
         public string Title { get; set; }
         public string Question { get; set; }
