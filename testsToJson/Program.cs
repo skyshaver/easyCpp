@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text.Json;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace testsToJson
 {
@@ -23,8 +22,7 @@ namespace testsToJson
             List<TestModel> testModels = new();
             using(StreamReader fs = new StreamReader(path))
             {
-                string line;
-                TestModel tm = new();
+                string line, title = "", question = "", examples = "";
                 bool firstLine = true;
                 bool isExample = false;                
                 while((line = fs.ReadLine()) != null)
@@ -40,7 +38,7 @@ namespace testsToJson
                         if(firstLine)
                         {
                             System.Console.WriteLine($"Title: {line.Substring(FindFirstLetter(line))}");                            
-                            tm.Title = line;
+                            title = line.Substring(FindFirstLetter(line));
                             firstLine = false;
                         }
                         else if(line =="// ** Examples **")
@@ -50,27 +48,28 @@ namespace testsToJson
                         else if(isExample)
                         {                            
                             System.Console.WriteLine($"Example: {line.Substring(FindFirstLetter(line))}");
-                            tm.Examples += line;
+                            examples += line.Substring(FindFirstLetter(line));
                         }
                         else
                         {
                             System.Console.WriteLine($"Question: {line.Substring(FindFirstLetter(line))}");
-                            tm.Question += line;
+                            question += line.Substring(FindFirstLetter(line));
                         }
                     }
                     if(line.Last() == ')')
                     {
                         System.Console.WriteLine($"Function Sig: {line.Substring(FindFirstLetter(line))}");
-                        tm.FunctionSig = line;
-                        tm.ID = Guid.NewGuid();
-                        tm.Diff = TestModel.Difficulty.Easy;
-                        testModels.Add(tm);
-                        tm.Clear();                        
+                        testModels.Add(new TestModel(
+                            Guid.NewGuid(), title, question, examples, 
+                            line.Substring(FindFirstLetter(line)), "Easy")
+                            );
+                        title = ""; question = ""; examples = "";
                     }
 
                 }
             }
             System.Console.WriteLine($"Final Count: {testModels.Count}");
+            File.WriteAllText("test.json", JsonConvert.SerializeObject(testModels, Formatting.Indented));
         }
     }
 }
