@@ -33,8 +33,7 @@ namespace testsToJson
                     if(line.Substring(0, 2) == @"//")
                     {                        
                         if(firstLine)
-                        {
-                            System.Console.WriteLine($"Title: {line.Substring(IdxOfFirstLetter(line))}");                            
+                        {                            
                             title = line.Substring(IdxOfFirstLetter(line));
                             firstLine = false;
                         }
@@ -43,29 +42,25 @@ namespace testsToJson
                             isExample = true;
                         }
                         else if(isExample)
-                        {                            
-                            System.Console.WriteLine($"Example: {line.Substring(IdxOfFirstLetter(line))}");
+                        {                                                        
                             examples += line.Substring(IdxOfFirstLetter(line));
                         }
                         else
-                        {
-                            System.Console.WriteLine($"Question: {line.Substring(IdxOfFirstLetter(line))}");
+                        {                            
                             question += line.Substring(IdxOfFirstLetter(line));
                         }
                     }
                     if(line.Last() == ')')
-                    {
-                        System.Console.WriteLine($"Function Sig: {line.Substring(IdxOfFirstLetter(line))}");
+                    {                        
                         testModels.Add(new TestModel(
                             Guid.NewGuid(), title, question, examples, 
-                            line.Substring(IdxOfFirstLetter(line)), "Easy")
-                            );
+                            line.Substring(IdxOfFirstLetter(line)), "Easy"
+                            ));
                         title = ""; question = ""; examples = "";
                     }
 
                 }
-            }
-            System.Console.WriteLine($"Final Count: {testModels.Count}");
+            }            
             File.WriteAllText("test.json", JsonConvert.SerializeObject(testModels, Formatting.Indented));
         }
     }
