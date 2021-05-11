@@ -4,12 +4,12 @@ using System.Collections.Generic;
 namespace testsToJson
 {
     class TestModel
-    {
-        public enum Difficulty
+    {        
+        public enum DifficultyLevel
         {
             Easy,
             Medium,
-            Hard,
+            Hard, 
             Legendary
         }
         public Guid ID { get; set; }
@@ -17,16 +17,16 @@ namespace testsToJson
         public string Question { get; set; }
         public string Examples { get; set; }
         public string FunctionSig {get; set; }
-        public Difficulty Diff { get; set; }
+        public string Difficulty { get; set; }
 
-        TestModel(Guid id, string title, string question, string examples, Difficulty diff)
+        public TestModel(Guid id, string title, string question, string examples, string functionSig, string difficulty)
         {
             ID = id;
             Title = title;
             Question = question;
             Examples = examples;
-            Diff = diff;
+            FunctionSig = functionSig;
+            Difficulty = difficulty;
         }        
-
     }
 }

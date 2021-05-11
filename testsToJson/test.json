@@ -1,0 +1,74 @@
+[
+  {
+    "ID": "0dbc4ab0-da6b-4fbb-9c71-7c6a71f1a522",
+    "Title": "sleepIn",
+    "Question": "he parameter weekday is true if it is a weekday, and the parameter vacation is true if we are on vacation. e sleep in if it is not a weekday or we're on vacation. Return true if we sleep in.",
+    "Examples": "",
+    "FunctionSig": "bool sleepIn(bool weekday, bool vacation)",
+    "Difficulty": "Easy"
+  },
+  {
+    "ID": "fdfeedf0-df1e-49c3-ba2c-62d2d61bbde2",
+    "Title": "sumDouble",
+    "Question": "e have two monkeys, a and b, and the parameters aSmile and bSmile indicate if each is smiling. e are in trouble if they are both smiling or if neither of them is smiling. Return true if we are in trouble.iven two int values, return their sum. Unless the two values are the same, then return double their sum.",
+    "Examples": "monkeyTrouble(true, true) → truemonkeyTrouble(false, false) → truemonkeyTrouble(true, false) → falsesumDouble(1, 2) → 3\tsumDouble(3, 2) → 5\tsumDouble(2, 2) → 8\tsumDouble(-1, 0) → -1sumDouble(3, 3) → 12sumDouble(0, 0) → 0\tsumDouble(0, 1) → 1\tsumDouble(3, 4) → 7",
+    "FunctionSig": "int sumDouble(int a, int b)",
+    "Difficulty": "Easy"
+  },
+  {
+    "ID": "86414fb7-4805-4c11-9fcb-13d942f084ec",
+    "Title": "makes10",
+    "Question": "iven an int n, return the absolute difference between n and 21, except return double the absolute difference if n is over 21.e have a loud talking parrot. The \"hour\" parameter is the current hour time in the range 0..23.e are in trouble if the parrot is talking and the hour is before 7 or after 20. Return true if we are in trouble.iven 2 ints, a and b, return true if one if them is 10 or if their sum is 10.",
+    "Examples": "diff21(19) → 2\tdiff21(10) → 11\tdiff21(21) → 0\tdiff21(22) → 2\tdiff21(25) → 8\tdiff21(30) → 18\tdiff21(0) → 21\tdiff21(1) → 20\tdiff21(2) → 19\tdiff21(-1) → 22\tdiff21(-2) → 23\tdiff21(50) → 58\tparrotTrouble(true, 6) → true\tparrotTrouble(true, 7) → false\tparrotTrouble(false, 6) → false\tparrotTrouble(true, 21) → true\tparrotTrouble(false, 21) → falseparrotTrouble(false, 20) → falseparrotTrouble(true, 23) → true\tparrotTrouble(false, 23) → falseparrotTrouble(true, 20) → false\tparrotTrouble(false, 12) → falsemakes10(9, 10) → true\tmakes10(9, 9) → false\tmakes10(1, 9) → true\tmakes10(10, 1) → true\tmakes10(10, 10) → true\tmakes10(8, 2) → true\tmakes10(8, 3) → false\tmakes10(10, 42) → true\tmakes10(12, -2) → true",
+    "FunctionSig": "bool makes10(int a, int b)",
+    "Difficulty": "Easy"
+  },
+  {
+    "ID": "ac9519f3-bc5a-4435-bbe7-8640469b7af0",
+    "Title": "frontBack",
+    "Question": "iven an int n, return true if it is within 10 of 100 or 200. Note: std::abs(num) computes the absolute value of a number.iven 2 int values, return true if one is negative and one is positive. xcept if the parameter \"negative\" is true, then return true only if both are negative.iven a string, return a new string where \"not \" has been added to the front.owever, if the string already begins with \"not\", return the string unchanged. ote: use == to compare 2 strings.use .substr(startIndex, length) to get part of a string,std::string hello = \"Hello\";hello.substr(0,3); // returns \"Hel\"iven a non-empty string and an int n, return a new string where the char at index n has been removed. he value of n will be a valid index of a char in the original string i.e. n will be in the range 0..str.length()-1 inclusive).substr(n) will go from n to the end of the stringiven a string, return a new string where the first and last chars have been exchanged.",
+    "Examples": "nearHundred(93) → true\tnearHundred(90) → true\tnearHundred(89) → false\tnearHundred(110) → true\tnearHundred(111) → false\tnearHundred(121) → false\tnearHundred(-101) → false\tnearHundred(-209) → false\tnearHundred(190) → true\tnearHundred(209) → true\tnearHundred(0) → false\tnearHundred(5) → false\tnearHundred(-50) → falsenearHundred(191) → true\tnearHundred(189) → falsenearHundred(200) → true\tnearHundred(210) → true\tnearHundred(211) → falsenearHundred(290) → falseposNeg(1, -1, false) → true\tposNeg(-1, 1, false) → true\tposNeg(-4, -5, true) → true\tposNeg(-4, -5, false) → false\tposNeg(-4, 5, false) → true\tposNeg(-4, 5, true) → false\tposNeg(1, 1, false) → false\tposNeg(-1, -1, false) → false\tposNeg(1, -1, true) → false\tposNeg(-1, 1, true) → false\tposNeg(1, 1, true) → false\tposNeg(-1, -1, true) → true\tposNeg(5, -5, false) → true\tposNeg(-6, 6, false) → true\tposNeg(-5, -6, false) → false\tposNeg(-2, -1, false) → false\tposNeg(1, 2, false) → falseposNeg(-5, 6, true) → falseposNeg(-5, -5, true) → truenotString(\"candy\") → \"not candy\"\tnotString(\"x\") → \"not x\"\tnotString(\"not bad\") → \"not bad\"\tnotString(\"bad\") → \"not bad\"\tnotString(\"not\") → \"not\"\tnotString(\"is not\") → \"not is not\"notString(\"no\") → \"not no\"missingChar(\"kitten\", 1) → \"ktten\"\tmissingChar(\"kitten\", 0) → \"itten\"\tmissingChar(\"kitten\", 4) → \"kittn\"\tmissingChar(\"Hi\", 0) → \"i\"missingChar(\"Hi\", 1) → \"H\"\tmissingChar(\"code\", 0) → \"ode\"\tmissingChar(\"code\", 1) → \"cde\"\tmissingChar(\"code\", 2) → \"coe\"\tmissingChar(\"code\", 3) → \"cod\"\tmissingChar(\"chocolate\", 8) → \"chocolat\"frontBack(\"code\") → \"eodc\"\tfrontBack(\"a\") → \"a\"\tfrontBack(\"ab\") → \"ba\"\tfrontBack(\"abc\") → \"cba\"\tfrontBack(\"\") → \"\"\t\"\"\tfrontBack(\"Chocolate\") → \"ehocolatC\"\tfrontBack(\"aavJ\") → \"Java\"\tfrontBack(\"hello\") → \"oellh\"\t",
+    "FunctionSig": "std::string frontBack(std::string str)",
+    "Difficulty": "Easy"
+  },
+  {
+    "ID": "c07d531e-c6bb-4f98-be54-89cafb41fd7c",
+    "Title": "or35",
+    "Question": "iven a string, we'll say that the front is the first 3 chars of the string.f the string length is less than 3, the front is whatever is there. Return a new string which is 3 copies of the front.iven a string, take the last char and return a new string with the last char added at the front and back,so \"cat\" yields \"tcatt\". The original string will be length 1 or more.eturn true if the given non-negative number is a multiple of 3 or a multiple of 5. se the % \"mod\" operator",
+    "Examples": "front3(\"Java\") → \"JavJavJav\"\tfront3(\"Chocolate\") → \"ChoChoCho\"front3(\"abc\") → \"abcabcabc\"\tfront3(\"abcXYZ\") → \"abcabcabc\"front3(\"ab\") → \"ababab\"\tfront3(\"a\") → \"aaa\"\t\"aaa\"front3(\"\") → \"\"\t\"\"backAround(\"cat\") → \"tcatt\"\tbackAround(\"Hello\") → \"oHelloo\"\tbackAround(\"a\") → \"aaa\"\tbackAround(\"abc\") → \"cabcc\"backAround(\"read\") → \"dreadd\"backAround(\"boo\") → \"obooo\"or35(3) → true\tor35(10) → true\tor35(8) → false\tor35(15) → true\tor35(5) → true\tor35(9) → true\tor35(4) → false\tor35(7) → false\tor35(6) → true\tor35(17) → falseor35(18) → true\tor35(29) → falseor35(20) → true\tor35(21) → true\tor35(22) → false\tor35(45) → true\t\tor35(99) → true\t\tor35(100) → true\tor35(101) → falseor35(121) → falseor35(122) → falseor35(123) → true",
+    "FunctionSig": "bool or35(int n)",
+    "Difficulty": "Easy"
+  },
+  {
+    "ID": "471d523e-4b96-4322-91f4-730d23a78f9f",
+    "Title": "front22",
+    "Question": "iven a string, take the first 2 chars and return the string with the 2 chars added at both the front and back, so \"kitten\" yields\"kikittenki\". If the string length is less than 2, use whatever chars are there.",
+    "Examples": "front22(\"kitten\") → \"kikittenki\"\tfront22(\"Ha\") → \"HaHaHa\"\tfront22(\"abc\") → \"ababcab\"\tfront22(\"ab\") → \"ababab\"\tfront22(\"a\") → \"aaa\"front22(\"\") → \"\"front22(\"Logic\") → \"LoLogicLo\"",
+    "FunctionSig": "std::string front22(std::string str)",
+    "Difficulty": "Easy"
+  },
+  {
+    "ID": "72a974d9-c79b-46a1-8153-7daabac532c0",
+    "Title": "startHi",
+    "Question": "iven a string, return true if the string starts with \"hi\" and false otherwise.",
+    "Examples": "startHi(\"hi there\") → true\t\tstartHi(\"hi\") → true\tstartHi(\"hello hi\") → false\tstartHi(\"he\") → false\tstartHi(\"h\") → false\tstartHi(\"\") → false\tstartHi(\"ho hi\") → falsestartHi(\"hi ho\") → true\t",
+    "FunctionSig": "bool startHi(std::string str)",
+    "Difficulty": "Easy"
+  },
+  {
+    "ID": "3326790c-72ad-4889-a049-b05112a54544",
+    "Title": "icyHot",
+    "Question": "iven two temperatures, return true if one is less than 0 and the other is greater than 100.",
+    "Examples": "icyHot(120, -1) → true\ticyHot(-1, 120) → true\ticyHot(2, 120) → false\ticyHot(-1, 100) → false\ticyHot(-2, -2) → false\ticyHot(120, 120) → false",
+    "FunctionSig": "bool icyHot(int temp1, int temp2)",
+    "Difficulty": "Easy"
+  },
+  {
+    "ID": "4ff81220-02e5-4f34-839f-a6c054611766",
+    "Title": "in1020",
+    "Question": "iven 2 int values, return true if either of them is in the range 10..20 inclusive.",
+    "Examples": "in1020(12, 99) → true\tin1020(21, 12) → true\tin1020(8, 99) → false\tin1020(99, 10) → true\tin1020(20, 20) → true\tin1020(21, 21) → false\tin1020(9, 9) → false\t",
+    "FunctionSig": "bool in1020(int a, int b)",
+    "Difficulty": "Easy"
+  }
+]

@@ -1,17 +1,27 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using Newtonsoft.Json;
+
 namespace testsToJson
 {
     class Program
     {
+        public static int IdxOfFirstLetter(string str)
+        {
+            var alphabet = "abcdefghijklmnopqrstuvwxyz".ToCharArray();
+            return str.IndexOfAny(alphabet);
+        }
         static void Main(string[] args)
         {
             string path = @"/Users/skyshaver/Development/easyCpp/codingbat/warm_up_1.cpp";
+            List<TestModel> testModels = new();
             using(StreamReader fs = new StreamReader(path))
             {
-                string line;
+                string line, title = "", question = "", examples = "";
                 bool firstLine = true;
-                bool isExample = false;
+                bool isExample = false;                
                 while((line = fs.ReadLine()) != null)
                 {
                     if(line.Length < 2)
@@ -21,10 +31,10 @@ namespace testsToJson
                         continue;  
                     } 
                     if(line.Substring(0, 2) == @"//")
-                    {
+                    {                        
                         if(firstLine)
-                        {
-                            System.Console.WriteLine($"Title: {line}");
+                        {                            
+                            title = line.Substring(IdxOfFirstLetter(line));
                             firstLine = false;
                         }
                         else if(line =="// ** Examples **")
@@ -32,21 +42,26 @@ namespace testsToJson
                             isExample = true;
                         }
                         else if(isExample)
-                        {
-                            System.Console.WriteLine($"Example: {line}");
+                        {                                                        
+                            examples += line.Substring(IdxOfFirstLetter(line));
                         }
                         else
-                        {
-                            System.Console.WriteLine($"Question: {line}");
+                        {                            
+                            question += line.Substring(IdxOfFirstLetter(line));
                         }
                     }
-                    if(line[line.Length - 1] == ')')
-                    {
-                        System.Console.WriteLine($"Function Sig: {line}");
+                    if(line.Last() == ')')
+                    {                        
+                        testModels.Add(new TestModel(
+                            Guid.NewGuid(), title, question, examples, 
+                            line.Substring(IdxOfFirstLetter(line)), "Easy"
+                            ));
+                        title = ""; question = ""; examples = "";
                     }
 
                 }
-            }
+            }            
+            File.WriteAllText("test.json", JsonConvert.SerializeObject(testModels, Formatting.Indented));
         }
     }
 }
