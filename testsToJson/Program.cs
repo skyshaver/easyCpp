@@ -43,11 +43,11 @@ namespace testsToJson
                         }
                         else if(isExample)
                         {                                                        
-                            examples += line.Substring(IdxOfFirstLetter(line));
+                            examples += (line.Substring(IdxOfFirstLetter(line)) + "\n");
                         }
                         else
                         {                            
-                            question += line.Substring(IdxOfFirstLetter(line));
+                            question += (line.Substring(IdxOfFirstLetter(line) - 1) + "\n");
                         }
                     }
                     if(line.Last() == ')')
@@ -62,6 +62,13 @@ namespace testsToJson
                 }
             }            
             File.WriteAllText("test.json", JsonConvert.SerializeObject(testModels, Formatting.Indented));
-        }
+            List<TestModel> tests = JsonConvert.DeserializeObject<List<TestModel>>(File.ReadAllText("test.json"));
+            foreach(var test in tests)
+            {
+                System.Console.WriteLine(test.Title);
+                System.Console.WriteLine(test.Question);
+            }
+            
+        } // end main
     }
 }
